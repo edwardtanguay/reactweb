@@ -66,7 +66,7 @@ class App extends Component {
 		return (
 			<div>
 				<header class="container text-white">
-					<h4 class="pt-2 pb-0">Das Wundertier - Ihr Tierarzt</h4><p class="font-italic">Version {this.state.version}</p>
+					<h4 class="pt-3 pb-0">Das Wundertier - Ihr Tierarzt</h4><p class="font-italic">Version {this.state.version}</p>
 				</header>
 				<main className="page bg-white" id="petratings">
 					<div className="container">
