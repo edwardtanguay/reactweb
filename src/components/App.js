@@ -66,9 +66,7 @@ class App extends Component {
 		return (
 			<div>
 				<header class="container text-white">
-					<div className="row py-4">
-						<h4>Das Wundertier - Ihr Tierarzt</h4><p class="ml-2"> version {this.state.version}</p>
-					</div>
+					<h4 class="pt-2 pb-0">Das Wundertier - Ihr Tierarzt</h4><p class="font-italic">Version {this.state.version}</p>
 				</header>
 				<main className="page bg-white" id="petratings">
 					<div className="container">
