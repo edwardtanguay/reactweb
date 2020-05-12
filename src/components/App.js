@@ -58,7 +58,7 @@ class App extends Component {
 				})
 				this.setState({
 					appointments: apts,
-					version: '0.0.7'
+					version: '0.0.8'
 				})
 			})
 	}
