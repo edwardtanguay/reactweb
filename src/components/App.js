@@ -3,20 +3,45 @@ import '../css/App.css';
 import AddAppointments from './AddAppointments';
 import SearchAppointments from './SearchAppointments';
 import ListAppointments from './ListAppointments';
+// import { isCompositeComponent } from 'react-dom/test-utils';
+import { without } from 'lodash';
 
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
 			location: "Berlin",
-			appointments: []
+			appointments: [],
+			formDisplay: false,
+			lastIndex: 0
 		}
+		this.deleteAppointment = this.deleteAppointment.bind(this);
+		this.toggleForm = this.toggleForm.bind(this);
 	}
+
+	toggleForm() {
+		this.setState({
+			formDisplay: !this.state.formDisplay
+		});
+	}
+
+	deleteAppointment(apt) {
+		let tempApts = this.state.appointments;
+		tempApts = without(tempApts, apt);
+
+		this.setState({
+			appointments: tempApts
+		})
+
+	}
+
 	componentDidMount() {
 		fetch('./data.json')
 			.then(response => response.json())
 			.then(result => {
 				const apts = result.map(item => {
+					item.aptId = this.state.lastIndex;
+					this.setState({ lastIndex: this.state.lastIndex + 1 });
 					return item;
 				})
 				this.setState({
@@ -31,9 +56,13 @@ class App extends Component {
 					<div className="row">
 						<div className="col-md-12 bg-white">
 							<div className="container">
-								<AddAppointments />
+								<AddAppointments formDisplay={this.state.formDisplay}
+								toggleForm = {this.toggleForm}
+								/>
 								<SearchAppointments />
-								<ListAppointments appointments={this.state.appointments} />
+								<ListAppointments appointments={this.state.appointments}
+									deleteAppointment={this.deleteAppointment}
+								/>
 							</div>
 						</div>
 					</div>
