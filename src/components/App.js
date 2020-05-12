@@ -17,12 +17,24 @@ class App extends Component {
 		}
 		this.deleteAppointment = this.deleteAppointment.bind(this);
 		this.toggleForm = this.toggleForm.bind(this);
+		this.addAppointment = this.addAppointment.bind(this);
 	}
 
 	toggleForm() {
 		this.setState({
 			formDisplay: !this.state.formDisplay
 		});
+	}
+
+	addAppointment(apt) {
+		let tempApts = this.state.appointments;
+		apt.aptId = this.state.lastIndex;
+		tempApts.unshift(apt);
+
+		this.setState({
+			appointments: tempApts,
+			lastIndex: this.state.lastIndex + 1
+		})
 	}
 
 	deleteAppointment(apt) {
@@ -57,7 +69,8 @@ class App extends Component {
 						<div className="col-md-12 bg-white">
 							<div className="container">
 								<AddAppointments formDisplay={this.state.formDisplay}
-								toggleForm = {this.toggleForm}
+									toggleForm={this.toggleForm}
+									addAppointment={this.addAppointment}
 								/>
 								<SearchAppointments />
 								<ListAppointments appointments={this.state.appointments}

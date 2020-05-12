@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import { FaHorse } from "react-icons/fa";
 import { GiBee } from "react-icons/gi";
+import { BsTrash } from "react-icons/bs";
 import Moment from 'react-moment';
 
 class ListAppointments extends Component {
@@ -12,7 +13,7 @@ class ListAppointments extends Component {
 						<div className="mr-3">
 							<button className="pet-delete btn btn-sm btn-danger"
 								onClick={() => this.props.deleteAppointment(item)}
-							>X</button>
+							><BsTrash/></button>
 						</div>
 
 						<div className="pet-info media-body">
