@@ -57,30 +57,38 @@ class App extends Component {
 					return item;
 				})
 				this.setState({
-					appointments: apts
+					appointments: apts,
+					version: '0.0.7'
 				})
 			})
 	}
 	render() {
 		return (
-			<main className="page bg-white" id="petratings">
-				<div className="container">
-					<div className="row">
-						<div className="col-md-12 bg-white">
-							<div className="container">
-								<AddAppointments formDisplay={this.state.formDisplay}
-									toggleForm={this.toggleForm}
-									addAppointment={this.addAppointment}
-								/>
-								<SearchAppointments />
-								<ListAppointments appointments={this.state.appointments}
-									deleteAppointment={this.deleteAppointment}
-								/>
+			<div>
+				<header class="container text-white">
+					<div className="row py-4">
+						<h4>Das Wundertier - Ihr Tierarzt</h4><p class="ml-2"> version {this.state.version}</p>
+					</div>
+				</header>
+				<main className="page bg-white" id="petratings">
+					<div className="container">
+						<div className="row">
+							<div className="col-md-12 bg-white">
+								<div className="container">
+									<AddAppointments formDisplay={this.state.formDisplay}
+										toggleForm={this.toggleForm}
+										addAppointment={this.addAppointment}
+									/>
+									<SearchAppointments />
+									<ListAppointments appointments={this.state.appointments}
+										deleteAppointment={this.deleteAppointment}
+									/>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</main>
+				</main>
+			</div>
 		)
 	}
 }
