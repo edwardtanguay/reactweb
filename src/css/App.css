@@ -40,5 +40,6 @@
 }
 
 .dropdown-item.active, .dropdown-item:active {
-	background-color: #a9aeb2;
+	/* background-color: #a9aeb2; */
+	background-color: magenta;
 }
